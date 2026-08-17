@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class Quiz {
   final List<String> _questions = [];
 
@@ -8,4 +10,12 @@ class Quiz {
   void add(String question) {
     _questions.add(question);
   }
+
+  @override
+  bool operator ==(Object other) {
+    return other is Quiz && listEquals(_questions, other._questions);
+  }
+
+  @override
+  int get hashCode => Object.hashAll(_questions);
 }

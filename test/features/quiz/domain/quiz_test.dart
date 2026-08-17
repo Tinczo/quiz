@@ -19,4 +19,21 @@ void main() {
     quiz.add("What is 2*2?");
     expect(quiz.length, 2);
   });
+
+  test('Quizzes with equal Questions should be equal', () {
+    Quiz quiz1 = Quiz();
+    quiz1.add("What is 2+2?");
+    Quiz quiz2 = Quiz();
+    quiz2.add("What is 2+2?");
+    expect(quiz1, quiz2);
+  });
+
+  test('Quizzes with unequal Questions should be unequal', () {
+    Quiz quiz1 = Quiz();
+    quiz1.add("What is 2+2?");
+    Quiz quiz2 = Quiz();
+    quiz2.add("What is 8+8?");
+    expect(quiz1, isNot(quiz2));
+  });
+
 }
