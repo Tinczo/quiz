@@ -12,4 +12,11 @@ void main() {
     quiz.add("What is 2+2?");
     expect(quiz.isEmpty, false);
   });
+
+  test('Adding two Questions to Quiz should make it length equal to two', () {
+    Quiz quiz = Quiz();
+    quiz.add("What is 2+2?");
+    quiz.add("What is 2*2?");
+    expect(quiz.length, 2);
+  });
 }
