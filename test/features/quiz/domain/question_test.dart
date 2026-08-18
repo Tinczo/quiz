@@ -40,6 +40,19 @@ Question createTwoPlusTwoIncorrectlyAnsweredQuestion() {
   );
 }
 
+Question createInvalidAnswerQuestion() {
+  return const Question(
+    'What is 2+2?',
+    [
+      Answer('1', isCorrect: false),
+      Answer('2', isCorrect: false),
+      Answer('3', isCorrect: false),
+      Answer('4', isCorrect: true),
+    ],
+    choosenAnswer: Answer('10', isCorrect: true),
+  );
+}
+
 void main() {
   test('Two questions with same fields should be equal', () {
     final q1 = createTwoPlusTwoQuestion();
@@ -61,12 +74,18 @@ void main() {
 
   group('isAnsweredCorrectly', () {
     test(
-      'isAnsweredCorrectly should trows NotAnsweredException if question is not answered',
+      'isAnsweredCorrectly should return False if answer is not choosen',
       () {
-        expect(
-          () => createTwoPlusTwoQuestion().isAnsweredCorrectly,
-          throwsA(isA<NotAnsweredException>()),
-        );
+        final q = createTwoPlusTwoQuestion();
+        expect(q.isAnsweredCorrectly, equals(false));
+      },
+    );
+
+    test(
+      'isAnsweredCorrectly should return False if choosenAnswer is not in answers',
+      () {
+        final q = createInvalidAnswerQuestion();
+        expect(q.isAnsweredCorrectly, equals(false));
       },
     );
 
