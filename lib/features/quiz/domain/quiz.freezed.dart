@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Quiz {
 
- List<Question> get _questions;
+ List<Question> get questions;
 /// Create a copy of Quiz
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $QuizCopyWith<Quiz> get copyWith => _$QuizCopyWithImpl<Quiz>(this as Quiz, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Quiz&&const DeepCollectionEquality().equals(other._questions, _questions));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Quiz&&const DeepCollectionEquality().equals(other.questions, questions));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_questions));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(questions));
 
 @override
 String toString() {
-  return 'Quiz(_questions: $_questions)';
+  return 'Quiz(questions: $questions)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $QuizCopyWith<$Res>  {
   factory $QuizCopyWith(Quiz value, $Res Function(Quiz) _then) = _$QuizCopyWithImpl;
 @useResult
 $Res call({
- List<Question> _questions
+ List<Question> questions
 });
 
 
@@ -62,9 +62,9 @@ class _$QuizCopyWithImpl<$Res>
 
 /// Create a copy of Quiz
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? _questions = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? questions = null,}) {
   return _then(_self.copyWith(
-_questions: null == _questions ? _self._questions : _questions // ignore: cast_nullable_to_non_nullable
+questions: null == questions ? _self.questions : questions // ignore: cast_nullable_to_non_nullable
 as List<Question>,
   ));
 }
@@ -150,10 +150,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Question> _questions)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Question> questions)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Quiz() when $default != null:
-return $default(_that._questions);case _:
+return $default(_that.questions);case _:
   return orElse();
 
 }
@@ -171,10 +171,10 @@ return $default(_that._questions);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Question> _questions)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Question> questions)  $default,) {final _that = this;
 switch (_that) {
 case _Quiz():
-return $default(_that._questions);case _:
+return $default(_that.questions);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -191,10 +191,10 @@ return $default(_that._questions);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Question> _questions)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Question> questions)?  $default,) {final _that = this;
 switch (_that) {
 case _Quiz() when $default != null:
-return $default(_that._questions);case _:
+return $default(_that.questions);case _:
   return null;
 
 }
@@ -206,14 +206,14 @@ return $default(_that._questions);case _:
 
 
 class _Quiz extends Quiz {
-  const _Quiz([final  List<Question> _questions = const <Question>[]]): __questions = _questions,super._();
+  const _Quiz([final  List<Question> questions = const <Question>[]]): _questions = questions,super._();
   
 
- final  List<Question> __questions;
-@override@JsonKey() List<Question> get _questions {
-  if (__questions is EqualUnmodifiableListView) return __questions;
+ final  List<Question> _questions;
+@override@JsonKey() List<Question> get questions {
+  if (_questions is EqualUnmodifiableListView) return _questions;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(__questions);
+  return EqualUnmodifiableListView(_questions);
 }
 
 
@@ -227,16 +227,16 @@ _$QuizCopyWith<_Quiz> get copyWith => __$QuizCopyWithImpl<_Quiz>(this, _$identit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Quiz&&const DeepCollectionEquality().equals(other.__questions, __questions));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Quiz&&const DeepCollectionEquality().equals(other._questions, _questions));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(__questions));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_questions));
 
 @override
 String toString() {
-  return 'Quiz(_questions: $_questions)';
+  return 'Quiz(questions: $questions)';
 }
 
 
@@ -247,7 +247,7 @@ abstract mixin class _$QuizCopyWith<$Res> implements $QuizCopyWith<$Res> {
   factory _$QuizCopyWith(_Quiz value, $Res Function(_Quiz) _then) = __$QuizCopyWithImpl;
 @override @useResult
 $Res call({
- List<Question> _questions
+ List<Question> questions
 });
 
 
@@ -264,9 +264,9 @@ class __$QuizCopyWithImpl<$Res>
 
 /// Create a copy of Quiz
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? _questions = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? questions = null,}) {
   return _then(_Quiz(
-null == _questions ? _self.__questions : _questions // ignore: cast_nullable_to_non_nullable
+null == questions ? _self._questions : questions // ignore: cast_nullable_to_non_nullable
 as List<Question>,
   ));
 }

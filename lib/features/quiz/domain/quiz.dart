@@ -1,5 +1,3 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:quiz/features/quiz/domain/question.dart';
 
@@ -9,13 +7,11 @@ part 'quiz.freezed.dart';
 abstract class Quiz with _$Quiz {
   const Quiz._();
 
-  const factory Quiz([@Default(<Question>[]) List<Question> _questions]) =
-      _Quiz;
+  const factory Quiz([@Default(<Question>[]) List<Question> questions]) = _Quiz;
 
-  Question get currentQuestion => _questions.first;
-  int get length => _questions.length;
-  bool get isEmpty => _questions.isEmpty;
+  Question get currentQuestion => questions.first;
+  int get length => questions.length;
+  bool get isEmpty => questions.isEmpty;
 
-  Quiz add(Question question) =>
-      copyWith(_questions: [..._questions, question]);
+  Quiz add(Question question) => copyWith(questions: [...questions, question]);
 }
