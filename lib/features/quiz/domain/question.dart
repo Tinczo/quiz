@@ -13,6 +13,14 @@ abstract class Question with _$Question {
     Answer? choosenAnswer,
   }) = _Question;
 
-  bool get isAnsweredCorrectly => isAnswered && choosenAnswer!.isCorrect;
+  bool get isAnsweredCorrectly {
+    if (!isAnswered) throw const NotAnsweredException();
+    return choosenAnswer!.isCorrect;
+  }
+
   bool get isAnswered => choosenAnswer != null;
+}
+
+class NotAnsweredException implements Exception {
+  const NotAnsweredException();
 }

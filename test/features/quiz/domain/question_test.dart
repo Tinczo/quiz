@@ -36,6 +36,7 @@ Question createTwoPlusTwoIncorrectlyAnsweredQuestion() {
       Answer('3', isCorrect: false),
       Answer('4', isCorrect: true),
     ],
+    choosenAnswer: Answer('1', isCorrect: false),
   );
 }
 
@@ -60,10 +61,12 @@ void main() {
 
   group('isAnsweredCorrectly', () {
     test(
-      'isAnsweredCorrectly should return False if question is not answered',
+      'isAnsweredCorrectly should trows NotAnsweredException if question is not answered',
       () {
-        final q = createTwoPlusTwoQuestion();
-        expect(q.isAnsweredCorrectly, equals(false));
+        expect(
+          () => createTwoPlusTwoQuestion().isAnsweredCorrectly,
+          throwsA(isA<NotAnsweredException>()),
+        );
       },
     );
 
@@ -82,6 +85,5 @@ void main() {
         expect(q.isAnsweredCorrectly, equals(true));
       },
     );
-    
   });
 }
