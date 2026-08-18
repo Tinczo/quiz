@@ -1,17 +1,11 @@
-import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Question {
-  const Question(this.text, this.answers);
-  final String text;
-  final List<String> answers;
+part 'question.freezed.dart';
 
-  @override
-  bool operator ==(Object other) {
-    return other is Question &&
-        other.text == text &&
-        listEquals(other.answers, answers);
-  }
-
-  @override
-  int get hashCode => Object.hash(text, Object.hashAll(answers));
+@freezed
+abstract class Question with _$Question {
+  const factory Question(
+    String text,
+    List<String> answers,
+  ) = _Question;
 }

@@ -10,40 +10,40 @@ void main() {
   }
 
   test('Newly created Quiz should be empty', () {
-    const quiz = Quiz([]);
-    expect(quiz.isEmpty, true);
+    const quiz = Quiz();
+    expect(quiz.isEmpty, equals(true));
   });
 
   test('Adding first Question to Quiz should make it not empty', () {
     final quiz = createOneQuestionQuiz();
-    expect(quiz.isEmpty, false);
+    expect(quiz.isEmpty, equals(false));
   });
 
   test('Adding two Questions to Quiz should make it length equal to two', () {
     Quiz quiz = createOneQuestionQuiz();
     quiz = quiz.add(const Question('What is 2*2?', ['1', '2', '3', '4']));
-    expect(quiz.length, 2);
+    expect(quiz.length, equals(2));
   });
 
   test('Quizzes with equal Questions should be equal', () {
     final quiz1 = createOneQuestionQuiz();
-    Quiz quiz2 = const Quiz([]);
+    Quiz quiz2 = const Quiz();
     quiz2 = quiz2.add(const Question('What is 2+2?', ['1', '2', '3', '4']));
-    expect(quiz1, quiz2);
+    expect(quiz1, equals(quiz2));
   });
 
   test('Quizzes with unequal Questions should be unequal', () {
     final quiz1 = createOneQuestionQuiz();
-    Quiz quiz2 = const Quiz([]);
+    Quiz quiz2 = const Quiz();
     quiz2 = quiz2.add(const Question('What is 2*2?', ['1', '2', '3', '4']));
     expect(quiz1, isNot(quiz2));
   });
 
   test('currentQuestion is the first question when none are answered', () {
-    Quiz quiz = const Quiz([]);
+    Quiz quiz = const Quiz();
     const question = Question('What is 2+2?', ['1', '2', '3', '4']);
     quiz = quiz.add(question);
-    expect(quiz.currentQuestion, question);
+    expect(quiz.currentQuestion, equals(question));
   });
 
   test(

@@ -1,40 +1,21 @@
-import 'package:flutter/foundation.dart';
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:quiz/features/quiz/domain/question.dart';
 
-class Quiz {
-  const Quiz(List<Question> questions) : _questions = questions;
+part 'quiz.freezed.dart';
 
-  final List<Question> _questions;
+@freezed
+abstract class Quiz with _$Quiz {
+  const Quiz._();
 
-  Quiz add(Question question) {
-    return Quiz([..._questions, question]);
-  }
+  const factory Quiz([@Default(<Question>[]) List<Question> _questions]) =
+      _Quiz;
 
   Question get currentQuestion => _questions.first;
   int get length => _questions.length;
   bool get isEmpty => _questions.isEmpty;
 
-  @override
-  bool operator ==(Object other) {
-    return other is Quiz && listEquals(_questions, other._questions);
-  }
-
-  @override
-  int get hashCode => Object.hashAll(_questions);
-
-  @override
-  String toString() {
-    String result = 'Quiz([';
-    for (final question in _questions) {
-      result += 'Question("${question.text}", [';
-      for (final answer in question.answers) {
-        result += '"$answer", ';
-      }
-      result = result.trimRight();
-      result += ']), ';
-    }
-    result = result.trimRight();
-    result += "])";
-    return result;
-  }
+  Quiz add(Question question) =>
+      copyWith(_questions: [..._questions, question]);
 }
