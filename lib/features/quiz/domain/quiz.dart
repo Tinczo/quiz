@@ -2,7 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:quiz/features/quiz/domain/question.dart';
 
 class Quiz {
-  final List<Question> _questions = [];
+  const Quiz();
+
+  final List<Question> _questions = const [];
 
   void add(Question question) {
     _questions.add(question);
