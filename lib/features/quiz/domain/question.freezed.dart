@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Question {
 
- String get text; List<String> get answers; int get indexOfCorrectAnswer; int? get indexOfChoosenAnswer;
+ String get text; List<Answer> get answers; Answer? get choosenAnswer;
 /// Create a copy of Question
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $QuestionCopyWith<Question> get copyWith => _$QuestionCopyWithImpl<Question>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Question&&(identical(other.text, text) || other.text == text)&&const DeepCollectionEquality().equals(other.answers, answers)&&(identical(other.indexOfCorrectAnswer, indexOfCorrectAnswer) || other.indexOfCorrectAnswer == indexOfCorrectAnswer)&&(identical(other.indexOfChoosenAnswer, indexOfChoosenAnswer) || other.indexOfChoosenAnswer == indexOfChoosenAnswer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Question&&(identical(other.text, text) || other.text == text)&&const DeepCollectionEquality().equals(other.answers, answers)&&(identical(other.choosenAnswer, choosenAnswer) || other.choosenAnswer == choosenAnswer));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,text,const DeepCollectionEquality().hash(answers),indexOfCorrectAnswer,indexOfChoosenAnswer);
+int get hashCode => Object.hash(runtimeType,text,const DeepCollectionEquality().hash(answers),choosenAnswer);
 
 @override
 String toString() {
-  return 'Question(text: $text, answers: $answers, indexOfCorrectAnswer: $indexOfCorrectAnswer, indexOfChoosenAnswer: $indexOfChoosenAnswer)';
+  return 'Question(text: $text, answers: $answers, choosenAnswer: $choosenAnswer)';
 }
 
 
@@ -45,11 +45,11 @@ abstract mixin class $QuestionCopyWith<$Res>  {
   factory $QuestionCopyWith(Question value, $Res Function(Question) _then) = _$QuestionCopyWithImpl;
 @useResult
 $Res call({
- String text, List<String> answers, int indexOfCorrectAnswer, int? indexOfChoosenAnswer
+ String text, List<Answer> answers, Answer? choosenAnswer
 });
 
 
-
+$AnswerCopyWith<$Res>? get choosenAnswer;
 
 }
 /// @nodoc
@@ -62,16 +62,27 @@ class _$QuestionCopyWithImpl<$Res>
 
 /// Create a copy of Question
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? answers = null,Object? indexOfCorrectAnswer = null,Object? indexOfChoosenAnswer = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? text = null,Object? answers = null,Object? choosenAnswer = freezed,}) {
   return _then(_self.copyWith(
 text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,answers: null == answers ? _self.answers : answers // ignore: cast_nullable_to_non_nullable
-as List<String>,indexOfCorrectAnswer: null == indexOfCorrectAnswer ? _self.indexOfCorrectAnswer : indexOfCorrectAnswer // ignore: cast_nullable_to_non_nullable
-as int,indexOfChoosenAnswer: freezed == indexOfChoosenAnswer ? _self.indexOfChoosenAnswer : indexOfChoosenAnswer // ignore: cast_nullable_to_non_nullable
-as int?,
+as List<Answer>,choosenAnswer: freezed == choosenAnswer ? _self.choosenAnswer : choosenAnswer // ignore: cast_nullable_to_non_nullable
+as Answer?,
   ));
 }
+/// Create a copy of Question
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AnswerCopyWith<$Res>? get choosenAnswer {
+    if (_self.choosenAnswer == null) {
+    return null;
+  }
 
+  return $AnswerCopyWith<$Res>(_self.choosenAnswer!, (value) {
+    return _then(_self.copyWith(choosenAnswer: value));
+  });
+}
 }
 
 
@@ -153,10 +164,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String text,  List<String> answers,  int indexOfCorrectAnswer,  int? indexOfChoosenAnswer)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String text,  List<Answer> answers,  Answer? choosenAnswer)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Question() when $default != null:
-return $default(_that.text,_that.answers,_that.indexOfCorrectAnswer,_that.indexOfChoosenAnswer);case _:
+return $default(_that.text,_that.answers,_that.choosenAnswer);case _:
   return orElse();
 
 }
@@ -174,10 +185,10 @@ return $default(_that.text,_that.answers,_that.indexOfCorrectAnswer,_that.indexO
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String text,  List<String> answers,  int indexOfCorrectAnswer,  int? indexOfChoosenAnswer)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String text,  List<Answer> answers,  Answer? choosenAnswer)  $default,) {final _that = this;
 switch (_that) {
 case _Question():
-return $default(_that.text,_that.answers,_that.indexOfCorrectAnswer,_that.indexOfChoosenAnswer);case _:
+return $default(_that.text,_that.answers,_that.choosenAnswer);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -194,10 +205,10 @@ return $default(_that.text,_that.answers,_that.indexOfCorrectAnswer,_that.indexO
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String text,  List<String> answers,  int indexOfCorrectAnswer,  int? indexOfChoosenAnswer)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String text,  List<Answer> answers,  Answer? choosenAnswer)?  $default,) {final _that = this;
 switch (_that) {
 case _Question() when $default != null:
-return $default(_that.text,_that.answers,_that.indexOfCorrectAnswer,_that.indexOfChoosenAnswer);case _:
+return $default(_that.text,_that.answers,_that.choosenAnswer);case _:
   return null;
 
 }
@@ -209,19 +220,18 @@ return $default(_that.text,_that.answers,_that.indexOfCorrectAnswer,_that.indexO
 
 
 class _Question extends Question {
-  const _Question(this.text, final  List<String> answers, {required this.indexOfCorrectAnswer, this.indexOfChoosenAnswer}): _answers = answers,super._();
+  const _Question(this.text, final  List<Answer> answers, {this.choosenAnswer}): _answers = answers,super._();
   
 
 @override final  String text;
- final  List<String> _answers;
-@override List<String> get answers {
+ final  List<Answer> _answers;
+@override List<Answer> get answers {
   if (_answers is EqualUnmodifiableListView) return _answers;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_answers);
 }
 
-@override final  int indexOfCorrectAnswer;
-@override final  int? indexOfChoosenAnswer;
+@override final  Answer? choosenAnswer;
 
 /// Create a copy of Question
 /// with the given fields replaced by the non-null parameter values.
@@ -233,16 +243,16 @@ _$QuestionCopyWith<_Question> get copyWith => __$QuestionCopyWithImpl<_Question>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Question&&(identical(other.text, text) || other.text == text)&&const DeepCollectionEquality().equals(other._answers, _answers)&&(identical(other.indexOfCorrectAnswer, indexOfCorrectAnswer) || other.indexOfCorrectAnswer == indexOfCorrectAnswer)&&(identical(other.indexOfChoosenAnswer, indexOfChoosenAnswer) || other.indexOfChoosenAnswer == indexOfChoosenAnswer));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Question&&(identical(other.text, text) || other.text == text)&&const DeepCollectionEquality().equals(other._answers, _answers)&&(identical(other.choosenAnswer, choosenAnswer) || other.choosenAnswer == choosenAnswer));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,text,const DeepCollectionEquality().hash(_answers),indexOfCorrectAnswer,indexOfChoosenAnswer);
+int get hashCode => Object.hash(runtimeType,text,const DeepCollectionEquality().hash(_answers),choosenAnswer);
 
 @override
 String toString() {
-  return 'Question(text: $text, answers: $answers, indexOfCorrectAnswer: $indexOfCorrectAnswer, indexOfChoosenAnswer: $indexOfChoosenAnswer)';
+  return 'Question(text: $text, answers: $answers, choosenAnswer: $choosenAnswer)';
 }
 
 
@@ -253,11 +263,11 @@ abstract mixin class _$QuestionCopyWith<$Res> implements $QuestionCopyWith<$Res>
   factory _$QuestionCopyWith(_Question value, $Res Function(_Question) _then) = __$QuestionCopyWithImpl;
 @override @useResult
 $Res call({
- String text, List<String> answers, int indexOfCorrectAnswer, int? indexOfChoosenAnswer
+ String text, List<Answer> answers, Answer? choosenAnswer
 });
 
 
-
+@override $AnswerCopyWith<$Res>? get choosenAnswer;
 
 }
 /// @nodoc
@@ -270,17 +280,28 @@ class __$QuestionCopyWithImpl<$Res>
 
 /// Create a copy of Question
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? text = null,Object? answers = null,Object? indexOfCorrectAnswer = null,Object? indexOfChoosenAnswer = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? text = null,Object? answers = null,Object? choosenAnswer = freezed,}) {
   return _then(_Question(
 null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
 as String,null == answers ? _self._answers : answers // ignore: cast_nullable_to_non_nullable
-as List<String>,indexOfCorrectAnswer: null == indexOfCorrectAnswer ? _self.indexOfCorrectAnswer : indexOfCorrectAnswer // ignore: cast_nullable_to_non_nullable
-as int,indexOfChoosenAnswer: freezed == indexOfChoosenAnswer ? _self.indexOfChoosenAnswer : indexOfChoosenAnswer // ignore: cast_nullable_to_non_nullable
-as int?,
+as List<Answer>,choosenAnswer: freezed == choosenAnswer ? _self.choosenAnswer : choosenAnswer // ignore: cast_nullable_to_non_nullable
+as Answer?,
   ));
 }
 
+/// Create a copy of Question
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AnswerCopyWith<$Res>? get choosenAnswer {
+    if (_self.choosenAnswer == null) {
+    return null;
+  }
 
+  return $AnswerCopyWith<$Res>(_self.choosenAnswer!, (value) {
+    return _then(_self.copyWith(choosenAnswer: value));
+  });
+}
 }
 
 // dart format on

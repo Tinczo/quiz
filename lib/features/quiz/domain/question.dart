@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:quiz/features/quiz/domain/answer.dart';
 
 part 'question.freezed.dart';
 
@@ -8,11 +9,10 @@ abstract class Question with _$Question {
 
   const factory Question(
     String text,
-    List<String> answers, {
-    required int indexOfCorrectAnswer,
-    int? indexOfChoosenAnswer,
+    List<Answer> answers, {
+    Answer? choosenAnswer,
   }) = _Question;
 
-  bool get isAnsweredCorrectly => indexOfCorrectAnswer == indexOfChoosenAnswer;
-  bool get isAnswered => indexOfChoosenAnswer != null;
+  bool get isAnsweredCorrectly => isAnswered && choosenAnswer!.isCorrect;
+  bool get isAnswered => choosenAnswer != null;
 }
