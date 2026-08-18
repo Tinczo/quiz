@@ -14,6 +14,18 @@ Question createTwoPlusTwoQuestion() {
   );
 }
 
+Question createTwoTimesTwoQuestion() {
+  return const Question(
+    'What is 2*2?',
+    [
+      Answer('1', isCorrect: false),
+      Answer('2', isCorrect: false),
+      Answer('3', isCorrect: false),
+      Answer('4', isCorrect: true),
+    ],
+  );
+}
+
 Question createTwoPlusTwoCorrectlyAnsweredQuestion() {
   return const Question(
     'What is 2+2?',
@@ -70,6 +82,20 @@ void main() {
       final q = createTwoPlusTwoCorrectlyAnsweredQuestion();
       expect(q.isAnswered, equals(true));
     });
+  });
+
+  group('answerWith', () {
+    test(
+      'answerWith with proper answer should make isAnswered True and isAnsweredCorrectly True',
+      () {
+        Question q = createTwoPlusTwoQuestion();
+        expect(q.isAnswered, equals(false));
+        expect(q.isAnsweredCorrectly, equals(false));
+        q = q.answerWith(const Answer('4', isCorrect: true));
+        expect(q.isAnswered, equals(true));
+        expect(q.isAnsweredCorrectly, equals(true));
+      },
+    );
   });
 
   group('isAnsweredCorrectly', () {

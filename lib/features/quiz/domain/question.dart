@@ -20,4 +20,8 @@ abstract class Question with _$Question {
   }
 
   bool get isAnswered => choosenAnswer != null;
+
+  Question answerWith(Answer answer) {
+    return copyWith(choosenAnswer: answer);
+  }
 }
