@@ -1,15 +1,16 @@
 import 'package:flutter/foundation.dart';
+import 'package:quiz/features/quiz/domain/question.dart';
 
 class Quiz {
-  final List<String> _questions = [];
+  final List<Question> _questions = [];
 
-  bool get isEmpty => _questions.isEmpty;
-
-  int get length => _questions.length;
-
-  void add(String question) {
+  void add(Question question) {
     _questions.add(question);
   }
+
+  Question get currentQuestion => _questions.first;
+  int get length => _questions.length;
+  bool get isEmpty => _questions.isEmpty;
 
   @override
   bool operator ==(Object other) {
